@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { TodoService } from '../shared/todo.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Todo } from '../shared/todo.model';
@@ -24,6 +24,7 @@ export class EditTodoComponent implements OnInit {
     private route: ActivatedRoute,
     private todoService: TodoService,
     public dialog: MatDialog,
+    private cdr: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data: Todo
   ) {}
 
@@ -45,10 +46,12 @@ export class EditTodoComponent implements OnInit {
 
   changeToDone(): void {
     this.todoService.updateTodo(this.todo);
+    this.cdr.detectChanges();
   }
 
   saveTodo(): void {
     this.todoService.updateTodo(this.todo);
     this.dialog.closeAll();
+    this.cdr.detectChanges();
   }
 }

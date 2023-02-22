@@ -78,7 +78,7 @@ export class TodoService {
       console.log(`Todo with id ${todo.id} has been updated:`, todo);
     })
     .catch(error => {
-      console.error(`${todo.id}:`, error);
+      console.error(` ${todo.id}:`, error);
     });
   }
   
