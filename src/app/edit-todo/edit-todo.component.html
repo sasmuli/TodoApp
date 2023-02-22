@@ -1,0 +1,24 @@
+<mat-form-field appearance="fill" [style.width.px]=500 [style.padding.px]=30>
+  <mat-label >Title</mat-label>
+  <input matInput [(ngModel)]="todo.title">
+</mat-form-field>
+<mat-form-field appearance="fill" [style.width.px]=500 [style.padding.px]=30>
+  <mat-label>Urgent</mat-label>
+  <mat-select [(ngModel)]="urgent">
+    <mat-option [value]="true">Yes</mat-option>
+    <mat-option [value]="false">No</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill" [style.width.px]=500 [style.padding.px]=30>
+  <mat-label>More info</mat-label>
+  <input matInput [(ngModel)]="todo.text">
+</mat-form-field>
+<div>
+  <button mat-raised-button color="primary" routerLink="" routerLinkActive="active" mat-raised-button mat-dialog-close>Cancel</button>
+  <button (click)="onDelete()">Delete</button>
+  <button mat-raised-button color="primary" (click)="saveTodo()">Update</button>
+  <mat-slide-toggle [(ngModel)]="todo.isDone" (change)="changeToDone()">
+    {{ todo.isDone ? 'Done' : 'Not done' }}
+  </mat-slide-toggle>
+</div>
